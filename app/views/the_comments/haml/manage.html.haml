@@ -1,0 +1,28 @@
+%main{:class => "main", :role => "main"}
+  %div.wrap.clearfix
+    .row
+      %header.s-title.wow.fadeInLeft
+        %h1 Менеджер комментариев
+    
+    %aside.sidebar.one-fourth.wow.fadeInLeft
+      .widget
+        = render partial: 'the_comments/haml/sidebar'
+
+    %section.content.three-fourth.wow.fadeInRight
+      %section.container
+        - if @comments.blank?
+          .alert.alert-info= 'Нет комментариев'
+
+        .comments
+          - @comments.each do |comment|
+            - klass = { published: :primary, draft: :warning, deleted: :danger }[comment.state.to_sym]
+            .panel{ class: "panel-#{klass}" }
+              .panel-heading= comment.title
+              .panel-body
+                = render partial: 'the_comments/haml/comment_edit', locals: { comment: comment }
+                = render partial: 'the_comments/haml/comment_body', locals: { comment: comment }
+
+                = render partial: 'the_comments/haml/manage_controls', locals: { comment: comment }
+                = render partial: 'the_comments/haml/additional_info', locals: { comment: comment }
+              
+        = paginate @comments

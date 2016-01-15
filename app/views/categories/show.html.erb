@@ -1,0 +1,55 @@
+<!--main-->
+<main class="main" role="main">
+  <!--wrap-->
+  <div class="wrap clearfix">
+    <!--row-->
+    <div class="row">
+      <header class="s-title wow fadeInLeft">
+        <h1><%= @category.name %></h1>
+      </header>
+
+      <!--content-->
+      <section class="content three-fourth wow fadeInUp">
+      <% @recipes.each_slice(3) do |recipes| %>
+        <div class="entries row">
+          <% recipes.each do |recipe| %>
+            <div class="entry one-third wow fadeInLeft">
+              <figure>
+                <%= image_tag recipe.recipe_image.url(:medium) %>
+                <figcaption>
+                  <%= link_to recipe_path(recipe) do %>
+                    <i class="ico i-view"></i> <span>Просмотреть рецепт</span>
+                  <% end %>
+                </figcaption>
+              </figure>
+              <div class="container">
+                <h2><%= link_to recipe_path(recipe) do %><%= recipe.title %><% end %></h2>
+                <div class="actions">
+                  <div>
+                    <div class="difficulty"><i class="ico i-medium"></i><a href="#"><%= recipe.difficulty %></a></div>
+                    <div class="likes"><i class="ico i-likes"></i><a href="#">10</a></div>
+                    <div class="comments"><i class="ico i-comments"></i><a href="recipe.html#comments">7</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      </section>
+
+      <!--right sidebar-->
+      <aside class="sidebar one-fourth wow fadeInRight">
+        <%= render 'recipes/category_menu' %>
+        <div class="widget">
+          <h3>Advertisment</h3>
+          <a href="#"><%= image_tag("advertisment.jpg") %></a>
+        </div>
+      </aside>
+      <!--//right sidebar-->
+    </div>
+    <!--//row-->
+  </div>
+  <!--//wrap-->
+</main>
+<!--//main-->   
