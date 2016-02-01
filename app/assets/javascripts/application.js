@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.slicknav.min.js
 //= require cocoon
 //= require turbolinks
 //= require_tree .
