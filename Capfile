@@ -14,12 +14,12 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/bundler
 #   https://github.com/capistrano/rails
 
-require 'capistrano/rbenv'
+#require 'capistrano/rbenv'
 set :rbenv_type, :user
 set :rvm_ruby_version, '2.1.5-p273'
 require 'capistrano/bundler'
 require 'capistrano/rails'
-require 'capistrano/passenger'
+#require 'capistrano/passenger'
 
 # require 'capistrano/rvm'
 # require 'capistrano/rbenv'
